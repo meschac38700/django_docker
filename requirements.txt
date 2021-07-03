@@ -1,0 +1,4 @@
+Django==3.2.5
+django-cors-headers==3.7.0
+pika==1.2.0
+psycopg2==2.9.1

@@ -1,0 +1,32 @@
+version: "3.9"
+services:
+  app_db:
+    image: postgres:13
+    container_name: app_db
+    restart: unless-stopped
+    ports:
+      - "5431:5432"
+    environment:
+      - POSTGRES_DB=microservices
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - ./data/db:/var/lib/postgres/data
+
+  app_backend:
+    build: .
+    container_name: app_backend
+    restart: always
+    ports:
+      - 8000:80
+    volumes:
+      - .:/app
+    environment:
+      - DB_HOST=app_db
+      - DB_NAME=microservices
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_PORT=5432
+    depends_on:
+      - app_db
+
