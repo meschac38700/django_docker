@@ -1,4 +1,4 @@
-# Docker + Django
+# Docker + Django + Postgresql
 
 ## Run with Docker
 
