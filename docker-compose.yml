@@ -11,7 +11,7 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     volumes:
-      - ./data/db:/var/lib/postgres/data
+      - db:/var/lib/postgres/data
 
   app_backend:
     build: .
@@ -30,3 +30,6 @@ services:
     depends_on:
       - app_db
 
+volumes:
+  db:
+    driver: local
